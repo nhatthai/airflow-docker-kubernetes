@@ -1,0 +1,45 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: airflow-webserver
+  labels:
+    app: webserver
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: webserver
+  template:
+    metadata:
+      labels:
+        app: webserver
+    spec:
+      serviceAccountName: airflow
+      containers:
+        - name: webserver-pod
+          image: nhatthai/airflow-k8s-executor:latest
+          imagePullPolicy: Always
+          command: ["/bin/sh", "-c"]
+          args:
+            - airflow upgradedb;
+              airflow webserver;
+          envFrom:
+            - configMapRef:
+                name: airflow-variables
+          env:
+            - name: AIRFLOW__KUBERNETES__ENV_FROM_CONFIGMAP_REF
+              value: airflow-variables
+
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: airflow-webserver
+  labels:
+    app: webserver
+spec:
+  ports:
+  - port: 8080
+    protocol: TCP
+  selector:
+    app: webserver
