@@ -8,7 +8,7 @@ Deploy airflow with docker compose and kubernetes as well.
 + Airflow 1.10.12
 
 ### Docker Compose
-    + Create file .env
++ Create file .env
     ```
     AIRFLOW__CORE__LOAD_DEFAULT_CONNECTIONS=False
     AIRFLOW__CORE__SQL_ALCHEMY_CONN=postgres+psycopg2://airflow:airflow@postgres:5432/airflow
@@ -18,7 +18,7 @@ Deploy airflow with docker compose and kubernetes as well.
     AIRFLOW__SCHEDULER__SCHEDULER_HEARTBEAT_SEC=10
     ```
 
-    + Run webserver & scheduler
++ Run webserver & scheduler
     ```
     docker-compose up
     ```
