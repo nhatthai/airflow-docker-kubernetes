@@ -1,0 +1,31 @@
+---
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: airflow-variables
+  namespace: default
+data:
+    AIRFLOW__CORE__EXECUTOR: KubernetesExecutor
+    AIRFLOW__CORE__FERNET_KEY: B7SgOjI91jhcqQ1HIc0L6BXnOR2T0xv8DAtlc6W5bI0=
+    # CHANGE HERE: if you want to load DAG examples
+    AIRFLOW__CORE__LOAD_EXAMPLES: "False"
+    AIRFLOW__CORE__SQL_ALCHEMY_CONN: postgres+psycopg2://airflow:airflow@postgres-service:5432/airflow
+    AIRFLOW_CONN_METADATA_DB: postgres+psycopg2://airflow:airflow@postgres-service:5432/airflow
+    AIRFLOW_VAR__METADATA_DB_SCHEMA: airflow
+    AIRFLOW__SCHEDULER__SCHEDULER_HEARTBEAT_SEC: "10"
+    AIRFLOW__KUBERNETES__DAGS_IN_IMAGE: "True"
+    AIRFLOW__KUBERNETES__DELETE_WORKER_PODS: "True"
+    AIRFLOW__KUBERNETES__ENV_FROM_CONFIGMAP_REF: airflow-variables
+    AIRFLOW__KUBERNETES__KUBE_CLIENT_REQUEST_ARGS: ""
+    AIRFLOW__KUBERNETES__WORKER_CONTAINER_REPOSITORY: nhatthai/airflow-k8s-executor
+    AIRFLOW__KUBERNETES__WORKER_CONTAINER_TAG: latest #CHANGE HERE: your image tag
+    AIRFLOW__KUBERNETES__WORKER_PODS_CREATION_BATCH_SIZE: "10"
+    AIRFLOW__KUBERNETES__WORKER_SERVICE_ACCOUNT_NAME: airflow
+    AIRFLOW__KUBERNETES__RUN_AS_USER: "50000"
+    AIRFLOW__KUBERNETES__IN_CLUSTER: "True"
+    AIRFLOW__CORE__EXECUTOR: "KubernetesExecutor"
+    AIRFLOW__WEBSERVER__EXPOSE_CONFIG: "True"
+    AIRFLOW__KUBERNETES__NAMESPACE: "default"
+    POSTGRES_DB: airflow
+    POSTGRES_USER: airflow
+    POSTGRES_PASSWORD: airflow
