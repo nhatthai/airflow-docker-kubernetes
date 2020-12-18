@@ -10,10 +10,14 @@ Deploy airflow with docker compose and kubernetes as well.
 
 
 ### Structure folders
-+ airflow-k8s-pod-operator: run KubernetesPodOperator
-+ airflow-k8sexecutor: run Kubernetes Executer
-+ scripts: using docker-compose
-+ dags: dag files using docker-compose
+```
+|-airflow-k8s-pod-operator: run KubernetesPodOperator
+|-airflow-k8sexecutor: run Kubernetes Executer
+|-airflow-k8s: deploy on Kubernetes
+|-scripts: using docker-compose
+|-dags: dag files using docker-compose
+```
+
 
 
 ### Docker Compose
