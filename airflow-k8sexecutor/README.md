@@ -22,7 +22,10 @@ Also, there is some startup and shutdown overhead every time a task gets spin up
     docker push [tag id]
     ```
 
-+ Deploy Kubernetes Executor: the same deploy Kubernetes
++ Deploy Kubernetes Executor
+    ```
+    the same deploy in the [README](./../README.md) file
+    ```
 
 + Turn on the task and check Kubernetes pod
     ```
