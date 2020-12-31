@@ -11,11 +11,13 @@ Deploy airflow with docker compose and kubernetes as well.
 
 ### Structure folders
 ```
-|-airflow-k8s-pod-operator: run KubernetesPodOperator
-|-airflow-k8sexecutor: run Kubernetes Executer
-|-airflow-k8s: deploy on Kubernetes
+|-airflow-k8s-pod-operator: run and deploy KubernetesPodOperator
+|-airflow-k8sexecutor: run and deploy Kubernetes Executer
+|-k8s: deploy on Kubernetes
 |-scripts: using docker-compose
 |-dags: dag files using docker-compose
+|-docker-compose
+|-Dockerfile
 ```
 
 
@@ -40,30 +42,29 @@ Deploy airflow with docker compose and kubernetes as well.
 ### Kubernetes
 + Build and Push Image to Docker Hub(airflow-k8sexecutor)
     ```
-    docker build .
-    docker tag [image name]
+    docker build --tag=[image name] .
     docker push [image name]
     ```
 
 + Deploy config map
     ```
-    kubectl create -f airflow-k8s/airflow-configmap.yml
+    kubectl create -f k8s/airflow-configmap.yml
     ```
 
 + Deploy Postgres database
     ```
-    kubectl create -f airflow-k8s/postgres/deployment.yml
-    kubectl create -f airflow-k8s/postgres/service.yml
+    kubectl create -f k8s/postgres/deployment.yml
+    kubectl create -f k8s/postgres/service.yml
     ```
 
 + Deploy Scheduler
     ```
-    kubectl create -f airflow-k8s/scheduler.yml
+    kubectl create -f k8s/scheduler.yml
     ```
 
 + Deploy WebServer
     ```
-    kubectl create -f airflow-k8s/webserver.yml
+    kubectl create -f k8s/webserver.yml
     ```
 
 + Connect Airflow WebServer UI
