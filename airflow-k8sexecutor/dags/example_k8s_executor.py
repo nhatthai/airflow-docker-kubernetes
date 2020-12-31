@@ -1,7 +1,6 @@
 import logging
 import os
 from datetime import datetime, timedelta
-from pathlib import Path
 
 from airflow import DAG
 from airflow.operators.python_operator import PythonOperator
@@ -24,9 +23,11 @@ dag = DAG(
     },
 )
 
+
 def use_airflow_binary():
     rc = os.system("airflow -h")
     assert rc == 0
+
 
 with dag:
     task_1 = PythonOperator(

@@ -2,8 +2,6 @@ from datetime import timedelta
 
 # The DAG object; we'll need this to instantiate a DAG
 from airflow import DAG
-
-# Operators; we need this to operate!
 from airflow.operators.bash_operator import BashOperator
 from airflow.operators.python_operator import PythonOperator
 from airflow.utils.dates import days_ago
@@ -35,11 +33,13 @@ t1 = BashOperator(
     dag=dag,
 )
 
+
 # run python operator
 def print_context(ds, **kwargs):
     print(kwargs)
     print(ds)
     return 'Whatever you return gets printed in the logs'
+
 
 run_this = PythonOperator(
     task_id='print_the_context',

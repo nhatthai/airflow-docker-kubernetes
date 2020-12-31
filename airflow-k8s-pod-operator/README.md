@@ -4,19 +4,14 @@ The KubernetesPodOperator is by far the easiest way to get started running conta
 The downside of this aproach is that having highly customized containers with lots of dependencies will have to be translated into arguments that are passed to the Operator. This may take some research, trial and error to get right.
 
 ### Deployments
-+ Build image
++ Build and tag image
     ```
-    docker build .
-    ```
-
-+ Tag image
-    ```
-    docker tag [tag id]
+    docker build --tag=[image name] .
     ```
 
 + Push image to Docker Hub
     ```
-    docker push [tag id]
+    docker push [image name]
     ```
 
 + Deploy Kubernetes Executor
@@ -25,6 +20,9 @@ The downside of this aproach is that having highly customized containers with lo
     ```
 
 + Turn on Dag files on Web UI
+    ```
+    http://localhost:8080
+    ```
 
 + Turn on the task and check Kubernetes pod
     ```

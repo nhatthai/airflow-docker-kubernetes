@@ -7,19 +7,14 @@ Do take into account that when you are going to be scheduling lots of tasks in p
 
 Also, there is some startup and shutdown overhead every time a task gets spin up as a Pod. But depending on your expectations or requirements this is negligible.
 
-+ Build image
++ Build and tag image
     ```
-    docker build .
-    ```
-
-+ Tag image
-    ```
-    docker tag [tag id]
+    docker build --tag=[image name] .
     ```
 
 + Push image to Docker Hub
     ```
-    docker push [tag id]
+    docker push [image name]
     ```
 
 + Deploy Kubernetes Executor

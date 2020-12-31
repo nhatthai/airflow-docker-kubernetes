@@ -1,13 +1,11 @@
 import logging
 from datetime import datetime, timedelta
-from pathlib import Path
 
 from airflow import DAG
-from airflow.operators.dummy_operator import DummyOperator
 from airflow.contrib.operators.kubernetes_pod_operator import KubernetesPodOperator
-from airflow.utils.dates import days_ago
 
 log = logging.getLogger(__name__)
+
 
 dag = DAG(
     "example_using_k8s_pod_operator",
