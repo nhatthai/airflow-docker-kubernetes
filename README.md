@@ -1,13 +1,12 @@
-# airflow-docker-kubernetes
-Deploy airflow with docker compose and kubernetes as well.
-
+# Airflow Using Docker or Kubernetes
+    Deploy airflow with docker compose and kubernetes as well.
+    Using PythonOperator, KubernetesPodOperator and KubernetesExecutor as well
 
 ### Prerequisites
-+ Docker
++ Docker & Docker Compose
 + Minkube on local
 + Postgres 12
 + Airflow 1.10.12
-
 
 ### Structure folders
 ```
@@ -19,8 +18,6 @@ Deploy airflow with docker compose and kubernetes as well.
 |-docker-compose
 |-Dockerfile
 ```
-
-
 
 ### Docker Compose
 + Create a file .env
@@ -37,7 +34,6 @@ Deploy airflow with docker compose and kubernetes as well.
     ```
     docker-compose up
     ```
-
 
 ### Kubernetes
 + Build and Push Image to Docker Hub(airflow-k8sexecutor)
