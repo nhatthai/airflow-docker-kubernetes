@@ -7,10 +7,10 @@ services:
       - POSTGRES_PASSWORD=airflow
       - POSTGRES_DB=airflow
     ports:
-      - "5433:5432"
+      - "5432:5432"
 
   scheduler:
-    image: nhatthai/airflow-python3.7:latest
+    image: apache/airflow:1.10.12-python3.7
     restart: always
     depends_on:
       - postgres
@@ -30,7 +30,7 @@ services:
       retries: 3
 
   webserver:
-    image: nhatthai/airflow-python3.7:latest
+    image: apache/airflow:1.10.12-python3.7
     hostname: webserver
     restart: always
     depends_on:
